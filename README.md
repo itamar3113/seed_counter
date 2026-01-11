@@ -57,11 +57,39 @@ python main.py path/to/your/image.jpg \
   --method circle \
   --count-method blob \
   --visualize \
+  --debug \
   --min-disc-area 10000 \
   --max-disc-area 300000 \
   --min-seed-area 20 \
   --max-seed-area 800
 ```
+
+### Debug Mode
+
+Enable debug mode with the `-d` or `--debug` flag to save intermediate processing images that help understand and troubleshoot the disc extraction process:
+
+```bash
+python main.py path/to/your/image.jpg --debug
+```
+
+Debug mode saves the following images to the output directory:
+
+**For contour-based detection (default):**
+- `debug_threshold.png` - Binary threshold image showing white disc regions
+- `debug_all_contours.png` - Original image with all detected contours outlined
+- `debug_disc_N_mask.png` - Individual mask for each disc
+- `debug_disc_N_full.png` - Full disc image with bounding box before cropping
+
+**For circle-based detection (`--method circle`):**
+- `debug_blurred.png` - Blurred image used for circle detection
+- `debug_detected_circles.png` - Original image with detected circles
+- `debug_circle_N_mask.png` - Individual circular mask for each disc
+- `debug_circle_N_full.png` - Full disc image with bounding box before cropping
+
+Debug mode is particularly useful when:
+- Discs are not being detected correctly
+- You need to tune the area parameters
+- You want to understand how the extraction process works
 
 ### Command-Line Options
 
@@ -70,6 +98,7 @@ python main.py path/to/your/image.jpg \
 - `-m, --method`: Disc extraction method - `contour` or `circle` (default: contour)
 - `-c, --count-method`: Seed counting method - `threshold` or `blob` (default: threshold)
 - `-v, --visualize`: Save annotated images showing detected seeds
+- `-d, --debug`: Save debug images showing disc extraction process
 - `--min-disc-area`: Minimum disc area in pixels (default: 5000)
 - `--max-disc-area`: Maximum disc area in pixels (default: 500000)
 - `--min-seed-area`: Minimum seed area in pixels (default: 10)
