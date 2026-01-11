@@ -25,11 +25,13 @@ class TestDiscExtractor(unittest.TestCase):
             extractor = DiscExtractor()
             self.assertEqual(extractor.min_disc_area, 5000)
             self.assertEqual(extractor.max_disc_area, 500000)
+            self.assertEqual(extractor.debug, False)
             
             # Test custom initialization
-            extractor = DiscExtractor(min_disc_area=1000, max_disc_area=100000)
+            extractor = DiscExtractor(min_disc_area=1000, max_disc_area=100000, debug=True)
             self.assertEqual(extractor.min_disc_area, 1000)
             self.assertEqual(extractor.max_disc_area, 100000)
+            self.assertEqual(extractor.debug, True)
             
         except ImportError:
             self.skipTest("OpenCV not installed, skipping test")

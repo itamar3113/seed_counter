@@ -45,6 +45,11 @@ def main():
         help="Save annotated images showing detected seeds"
     )
     parser.add_argument(
+        "-d", "--debug",
+        action="store_true",
+        help="Save debug images showing disc extraction process"
+    )
+    parser.add_argument(
         "--min-disc-area",
         type=int,
         default=5000,
@@ -85,7 +90,8 @@ def main():
     
     extractor = DiscExtractor(
         min_disc_area=args.min_disc_area,
-        max_disc_area=args.max_disc_area
+        max_disc_area=args.max_disc_area,
+        debug=args.debug
     )
     
     try:
@@ -101,6 +107,9 @@ def main():
             )
         
         print(f"Extracted {len(discs)} disc(s)")
+        
+        if args.debug:
+            print(f"Debug images saved to: {args.output_dir}")
         
         if len(discs) == 0:
             print("Warning: No discs found in the image. Try adjusting the disc area parameters.")
