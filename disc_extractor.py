@@ -3,6 +3,7 @@ Module for extracting white discs from images.
 This module processes images to isolate white discs by removing the background.
 """
 
+import os
 import cv2
 import numpy as np
 from typing import List, Tuple, Optional
@@ -76,7 +77,6 @@ class DiscExtractor:
                 
                 # Optionally save the disc
                 if output_dir:
-                    import os
                     os.makedirs(output_dir, exist_ok=True)
                     output_path = os.path.join(output_dir, f"disc_{disc_count}.png")
                     cv2.imwrite(output_path, cropped_disc)
@@ -147,7 +147,6 @@ class DiscExtractor:
                 
                 # Optionally save the disc
                 if output_dir:
-                    import os
                     os.makedirs(output_dir, exist_ok=True)
                     output_path = os.path.join(output_dir, f"disc_{disc_count}.png")
                     cv2.imwrite(output_path, cropped_disc)

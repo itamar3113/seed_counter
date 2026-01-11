@@ -8,6 +8,7 @@ extracts the discs, and counts the seeds on them.
 import argparse
 import os
 import sys
+import cv2
 from disc_extractor import DiscExtractor
 from seed_counter import SeedCounter
 
@@ -126,7 +127,6 @@ def main():
             
             # Save annotated image if visualization is enabled
             if args.visualize and annotated is not None:
-                import cv2
                 annotated_path = os.path.join(args.output_dir, f"disc_{i}_annotated.png")
                 cv2.imwrite(annotated_path, annotated)
                 print(f"  Annotated image saved to: {annotated_path}")

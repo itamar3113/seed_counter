@@ -171,19 +171,35 @@ def main():
     # Run examples
     try:
         example_basic_usage(image_path)
-        example_with_visualization(image_path)
-        example_custom_parameters(image_path)
-        example_alternative_methods(image_path)
-        
-        print("\n" + "=" * 60)
-        print("All examples completed successfully!")
-        print("=" * 60)
-        
     except Exception as e:
-        print(f"\nError running examples: {e}")
+        print(f"\nError in basic usage example: {e}")
         import traceback
         traceback.print_exc()
-        sys.exit(1)
+    
+    try:
+        example_with_visualization(image_path)
+    except Exception as e:
+        print(f"\nError in visualization example: {e}")
+        import traceback
+        traceback.print_exc()
+    
+    try:
+        example_custom_parameters(image_path)
+    except Exception as e:
+        print(f"\nError in custom parameters example: {e}")
+        import traceback
+        traceback.print_exc()
+    
+    try:
+        example_alternative_methods(image_path)
+    except Exception as e:
+        print(f"\nError in alternative methods example: {e}")
+        import traceback
+        traceback.print_exc()
+    
+    print("\n" + "=" * 60)
+    print("Examples execution completed!")
+    print("=" * 60)
 
 
 if __name__ == "__main__":
