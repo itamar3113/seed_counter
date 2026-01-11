@@ -107,7 +107,8 @@ class DiscExtractor:
                     os.makedirs(output_dir, exist_ok=True)
                     output_path = os.path.join(output_dir, f"disc_{disc_count}.png")
                     cv2.imwrite(output_path, cropped_disc)
-                    disc_count += 1
+                
+                disc_count += 1
         
         return extracted_discs
     
@@ -206,6 +207,7 @@ class DiscExtractor:
                     os.makedirs(output_dir, exist_ok=True)
                     output_path = os.path.join(output_dir, f"disc_{disc_count}.png")
                     cv2.imwrite(output_path, cropped_disc)
-                    disc_count += 1
+                
+                disc_count += 1
         
         return extracted_discs
